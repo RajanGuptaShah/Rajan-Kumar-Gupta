@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rajan Kumar Gupta | Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            line-height: 1.6;
+        }
+        
+        .light {
+            --bg-primary: linear-gradient(135deg, #f5f7fa 0%, #e4e8ef 100%);
+            --bg-secondary: #fff;
+            --bg-accent: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            --text-primary: #333;
+            --text-secondary: #666;
+            --text-accent: #1e3c72;
+            --border-color: #ddd;
+            --skill-bar-bg: #e0e0e0;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --card-hover-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dark {
+            --bg-primary: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+            --bg-secondary: #374151;
+            --bg-accent: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            --text-primary: #f3f4f6;
+            --text-secondary: #d1d5db;
+            --text-accent: #60a5fa;
+            --border-color: #4b5563;
+            --skill-bar-bg: #4b5563;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --card-hover-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        .theme-bg-primary {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+        
+        .theme-bg-secondary {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+        
+        .theme-accent {
+            background: var(--bg-accent);
+            color: white;
+        }
+        
+        .theme-text-primary {
+            color: var(--text-primary);
+        }
+        
+        .theme-text-secondary {
+            color: var(--text-secondary);
+        }
+        
+        .theme-text-accent {
+            color: var(--text-accent);
+        }
+        
+        .theme-border {
+            border-color: var(--border-color);
+        }
+        
+        .gradient-bg {
+            background: var(--bg-accent);
+        }
+        
+        .gradient-text {
+            background: var(--bg-accent);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .skill-bar {
+            height: 8px;
+            border-radius: 4px;
+            background: var(--skill-bar-bg);
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            border-radius: 4px;
+            background: var(--bg-accent);
+        }
+        
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: var(--bg-secondary);
+            box-shadow: var(--card-shadow);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-hover-shadow);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: var(--bg-accent);
+            border-radius: 50%;
+            left: -8px;
+            top: 0;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px solid var(--border-color);
+            margin-bottom: 30px;
+        }
+        
+        .download-btn {
+            background: var(--bg-accent);
+            transition: all 0.3s ease;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(42, 82, 152, 0.4);
+        }
+        
+        .tech-tag {
+            background: rgba(30, 60, 114, 0.1);
+            color: var(--text-accent);
+            transition: all 0.3s ease;
+        }
+        
+        .dark .tech-tag {
+            background: rgba(96, 165, 250, 0.2);
+        }
+        
+        .tech-tag:hover {
+            background: rgba(30, 60, 114, 0.2);
+        }
+        
+        .dark .tech-tag:hover {
+            background: rgba(96, 165, 250, 0.3);
+        }
+        
+        /* Toggle Switch Styles */
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+        }
+        
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .toggle-slider {
+            background-color: #3b82f6;
+        }
+        
+        input:checked + .toggle-slider:before {
+            transform: translateX(30px);
+        }
+        
+        /* Chatbot Styles */
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--bg-accent);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+        }
+        
+        .chatbot-container {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 350px;
+            height: 450px;
+            background: var(--bg-secondary);
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+            overflow: hidden;
+            display: none;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+        
+        .chatbot-header {
+            padding: 15px;
+            background: var(--bg-accent);
+            color: white;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chatbot-close {
+            cursor: pointer;
+            font-size: 20px;
+        }
+        
+        .chatbot-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+        }
+        
+        .message {
+            margin-bottom: 15px;
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 15px;
+            word-wrap: break-word;
+        }
+        
+        .bot-message {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--text-primary);
+            border-top-left-radius: 0;
+            margin-right: auto;
+        }
+        
+        .user-message {
+            background: var(--bg-accent);
+            color: white;
+            border-top-right-radius: 0;
+            margin-left: auto;
+        }
+        
+        .chatbot-input {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .chatbot-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            margin-right: 10px;
+            outline: none;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+        
+        .chatbot-input button {
+            background: var(--bg-accent);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .chatbot-input button:hover {
+            opacity: 0.9;
+        }
+        
+        .chatbot-suggestions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 10px 15px;
+        }
+        
+        .suggestion-chip {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--text-accent);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .suggestion-chip:hover {
+            background: rgba(59, 130, 246, 0.2);
+        }
+    </style>
+</head>
+<body class="theme-bg-primary">
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 gradient-bg text-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold">Rajan Kumar Gupta</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="#about" class="hover:text-blue-200 transition">About</a>
+                <a href="#skills" class="hover:text-blue-200 transition">Skills</a>
+                <a href="#projects" class="hover:text-blue-200 transition">Projects</a>
+                <a href="#education" class="hover:text-blue-200 transition">Education</a>
+                <a href="#certifications" class="hover:text-blue-200 transition">Certifications</a>
+                <a href="#achievements" class="hover:text-blue-200 transition">Achievements</a>
+                <a href="#contact" class="hover:text-blue-200 transition">Contact</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="flex items-center">
+                    <span class="mr-2 text-sm"><i class="fas fa-sun"></i></span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="theme-toggle">
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <span class="ml-2 text-sm"><i class="fas fa-moon"></i></span>
+                </div>
+                <a href="https://page.genspark.site/get_upload_url/49e24eb035efa97aaf46d66527a495ec6f127bec773f5205ffeeb2877757d437/default/0ca7d891-f360-42ce-8ba5-41f8c413e59a" download="Rajan_Kumar_Gupta_Resume.pdf" class="download-btn text-white px-4 py-2 rounded-full text-sm font-medium">
+                    <i class="fas fa-download mr-2"></i>Download Resume
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+<section id="about" class="py-16 theme-bg-secondary">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+        <div class="md:w-1/3 mb-10 md:mb-0 flex justify-center">
+            <div class="rounded-full overflow-hidden border-4 border-blue-500 shadow-xl" style="width: 250px; height: 250px;">
+                <img src="https://page.genspark.site/v1/base64_upload/bec73f37815766eb0e693d3687b6981d" alt="Rajan Kumar Gupta" class="w-full h-full object-cover">
+            </div>
+        </div>
+        <div class="md:w-2/3 md:pl-12">
+            <h1 class="text-4xl font-bold mb-4 theme-text-primary">Rajan Kumar Gupta</h1>
+            <p class="text-xl theme-text-secondary mb-6">Aspiring Data Scientist | B.Tech CSE @ Lovely Professional University </p>
+            
+            <div class="theme-text-primary mb-6">
+                <h2 class="text-2xl font-semibold mb-3">👋 About Me</h2>
+                <p class="mb-4">
+                    Hi, I'm Rajan Kumar Gupta, an aspiring Data Scientist and a final-year B.Tech CSE student at Lovely Professional University. I'm passionate about turning raw data into meaningful insights and solutions.
+                </p>
+                <p class="mb-4">
+                    With a strong foundation in Python, Java, and C++, I specialize in:
+                </p>
+                <ul class="list-none space-y-2 mb-4">
+                    <li class="flex items-start">
+                        <span class="mr-2">📊</span>
+                        <span>Data Analysis & Visualization</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="mr-2">🤖</span>
+                        <span>Machine Learning & Predictive Modeling</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="mr-2">🌐</span>
+                        <span>Web Development & Interactive Dashboards</span>
+                    </li>
+                </ul>
+                
+                <p>
+                    Let's connect and create something impactful together!
+                </p>
+            </div>
+            
+            <div class="flex gap-4">
+                <a href="https://linkedin.com/in/rajangupta1201" target="_blank" class="bg-blue-100 hover:bg-blue-200 text-blue-800 dark:bg-blue-800 dark:text-blue-100 dark:hover:bg-blue-700 px-4 py-2 rounded-full flex items-center transition">
+                    <i class="fab fa-linkedin mr-2"></i>
+                    LinkedIn
+                </a>
+                <a href="https://github.com/RajanGuptaShah" target="_blank" class="bg-gray-100 hover:bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600 px-4 py-2 rounded-full flex items-center transition">
+                    <i class="fab fa-github mr-2"></i>
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 theme-bg-primary">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 gradient-text">Skills & Expertise</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Technical Skills -->
+                <div class="theme-bg-secondary p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-6 theme-text-primary">Technical Skills</h3>
+                    
+                    <div class="mb-5">
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium theme-text-primary">C++</span>
+                            <span class="theme-text-primary">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-5">
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium theme-text-primary">Java</span>
+                            <span class="theme-text-primary">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-5">
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium theme-text-primary">Python</span>
+                            <span class="theme-text-primary">95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-5">
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium theme-text-primary">R-Programming</span>
+                            <span class="theme-text-primary">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-5">
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium theme-text-primary">HTML & CSS</span>
+                            <span class="theme-text-primary">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-0">
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium theme-text-primary">Flask</span>
+                            <span class="theme-text-primary">75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tools & Platforms -->
+                <div class="theme-bg-secondary p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-6 theme-text-primary">Tools & Platforms</h3>
+                    
+                    <div class="flex flex-wrap gap-3 mb-8">
+                        <span class="tech-tag px-3 py-1 rounded-full text-sm">NumPy</span>
+                        <span class="tech-tag px-3 py-1 rounded-full text-sm">Pandas</span>
+                        <span class="tech-tag px-3 py-1 rounded-full text-sm">Seaborn</span>
+                        <span class="tech-tag px-3 py-1 rounded-full text-sm">Matplotlib</span>
+                        <span class="tech-tag px-3 py-1 rounded-full text-sm">Google Colab</span>
+                        <span class="tech-tag px-3 py-1 rounded-full text-sm">Tableau</span>
+                        <span class="tech-tag px-3 py-1 rounded-full text-sm">Plotly</span>
+                        <span class="tech-tag px-3 py-1 rounded-full text-sm">Dash</span>
+                        <span class="tech-tag px-3 py-1 rounded-full text-sm">Prophet</span>
+                        <span class="tech-tag px-3 py-1 rounded-full text-sm">Scikit-learn</span>
+                        <span class="tech-tag px-3 py-1 rounded-full text-sm">Flask</span>
+                        <span class="tech-tag px-3 py-1 rounded-full text-sm">Technical Analysis</span>
+                    </div>
+                    
+                    <h3 class="text-xl font-semibold mb-6 theme-text-primary">Soft Skills</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-blue-500"></i>
+                            <span class="theme-text-primary">Decision-Making</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-blue-500"></i>
+                            <span class="theme-text-primary">Critical Thinking</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-blue-500"></i>
+                            <span class="theme-text-primary">Creativity</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-blue-500"></i>
+                            <span class="theme-text-primary">Assertiveness</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-blue-500"></i>
+                            <span class="theme-text-primary">Problem Solving</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-blue-500"></i>
+                            <span class="theme-text-primary">Team Collaboration</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 theme-bg-secondary">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 gradient-text">Projects</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card rounded-lg shadow-lg overflow-hidden">
+                    <div class="h-64 overflow-hidden">
+                        <img src="Amazon(AMZN).png" alt="Stock Price Forecasting Dashboard" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold theme-text-primary">Stock Price Forecasting Dashboard</h3>
+                            <span class="text-sm theme-text-secondary">Feb-Mar 2025</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag px-2 py-1 rounded-full text-xs">Python</span>
+                            <span class="tech-tag px-2 py-1 rounded-full text-xs">Pandas</span>
+                            <span class="tech-tag px-2 py-1 rounded-full text-xs">Plotly</span>
+                            <span class="tech-tag px-2 py-1 rounded-full text-xs">Dash</span>
+                            <span class="tech-tag px-2 py-1 rounded-full text-xs">Prophet</span>
+                        </div>
+                        <ul class="theme-text-primary space-y-2 mb-4">
+                            <li class="flex items-start">
+                                <i class="fas fa-caret-right text-blue-500 mt-1 mr-2"></i>
+                                <span>Created an interactive Dash dashboard utilizing Yahoo Finance API for real-time stock information, with an automated CSV fallback mechanism.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-caret-right text-blue-500 mt-1 mr-2"></i>
+                                <span>Applied time series forecasting via Facebook Prophet and incorporated technical indicators (RSI, EMA, MACD) to strengthen prediction accuracy.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-caret-right text-blue-500 mt-1 mr-2"></i>
+                                <span>Engineered dynamic Plotly visuals with interactive elements, enabling users to analyze trends and adjust parameters for scenario-based evaluations.</span>
+                            </li>
+			<li class="flex items-start">
+                                <i class="fas fa-caret-right text-blue-500 mt-1 mr-2"></i>
+                                <span>GitHub: <a href="https://github.com/RajanGuptaShah/Stock_Price_Forecasting" target="_blank" class="text-blue-500 hover:underline">Stock_Price_Forecasting</a></span>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card rounded-lg shadow-lg overflow-hidden">
+                    <div class="h-64 overflow-hidden">
+                        <img src="Snapshot of Working Web.png" alt="Heart Disease Prediction System" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold theme-text-primary">Heart Disease Prediction System</h3>
+                            <span class="text-sm theme-text-secondary">Dec-Jan 2025</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag px-2 py-1 rounded-full text-xs">Python</span>
+                            <span class="tech-tag px-2 py-1 rounded-full text-xs">Machine Learning</span>
+                            <span class="tech-tag px-2 py-1 rounded-full text-xs">Flask</span>
+                            <span class="tech-tag px-2 py-1 rounded-full text-xs">HTML/CSS</span>
+                            <span class="tech-tag px-2 py-1 rounded-full text-xs">Scikit-learn</span>
+                        </div>
+                        <ul class="theme-text-primary space-y-2 mb-4">
+                            <li class="flex items-start">
+                                <i class="fas fa-caret-right text-blue-500 mt-1 mr-2"></i>
+                                <span>Built a highly accurate heart disease classifier using the Random Forest algorithm (achieved >99% accuracy).</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-caret-right text-blue-500 mt-1 mr-2"></i>
+                                <span>Launched a user-centric Flask web application that allows real-time health risk predictions based on user inputs.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-caret-right text-blue-500 mt-1 mr-2"></i>
+                                <span>Employed feature selection methods to boost model performance and lower computational overhead.</span>
+                            </li>
+			<li class="flex items-start">
+                                <i class="fas fa-caret-right text-blue-500 mt-1 mr-2"></i>
+                                <span>GitHub: <a href="https://github.com/RajanGuptaShah/Heart-Disease-Prediction" target="_blank" class="text-blue-500 hover:underline">Heart-Disease-Prediction</a></span>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card rounded-lg shadow-lg overflow-hidden">
+                    <div class="h-64 overflow-hidden">
+                        <img src="Snapshot of Dashboard.png" alt="Road Accident Dashboard" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold theme-text-primary">Road Accident Dashboard</h3>
+                            <span class="text-sm theme-text-secondary">Oct-Nov 2024</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag px-2 py-1 rounded-full text-xs">Tableau</span>
+                            <span class="tech-tag px-2 py-1 rounded-full text-xs">Data Visualization</span>
+                            <span class="tech-tag px-2 py-1 rounded-full text-xs">Tableau Prep</span>
+                        </div>
+                        <ul class="theme-text-primary space-y-2 mb-4">
+                            <li class="flex items-start">
+                                <i class="fas fa-caret-right text-blue-500 mt-1 mr-2"></i>
+                                <span>Created a fully interactive dashboard to interpret and display road accident data, revealing key patterns and risk zones.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-caret-right text-blue-500 mt-1 mr-2"></i>
+                                <span>Combined multiple Tableau chart types and filters to improve accessibility and decision-making utility.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-caret-right text-blue-500 mt-1 mr-2"></i>
+                                <span>Conducted thorough data cleaning and restructuring to support precise and informative visual storytelling.</span>
+                            </li>
+			<li class="flex items-start">
+                                <i class="fas fa-caret-right text-blue-500 mt-1 mr-2"></i>
+                                <span>GitHub: <a href="https://github.com/RajanGuptaShah/Road-Accident-Dashboard" target="_blank" class="text-blue-500 hover:underline">Road-Accident-Dashboard</a></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="project-card rounded-lg shadow-lg overflow-hidden">
+                    <div class="h-64 overflow-hidden">
+                        <img src="Weather.png" alt="Weather Analysis Dashboard" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold theme-text-primary">Weather Analysis Dashboard</h3>
+                            <span class="text-sm theme-text-secondary">Oct-Nov 2024</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag px-2 py-1 rounded-full text-xs">R</span>
+                            <span class="tech-tag px-2 py-1 rounded-full text-xs">ggplot2</span>
+                            <span class="tech-tag px-2 py-1 rounded-full text-xs">e1071</span>
+                            <span class="tech-tag px-2 py-1 rounded-full text-xs">rpart</span>
+                            <span class="tech-tag px-2 py-1 rounded-full text-xs">Shiny</span>
+                        </div>
+                        <ul class="theme-text-primary space-y-2 mb-4">
+                            <li class="flex items-start">
+                                <i class="fas fa-caret-right text-blue-500 mt-1 mr-2"></i>
+                                <span>Designed a responsive dashboard for weather forecasting using live CSV data streams.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-caret-right text-blue-500 mt-1 mr-2"></i>
+                                <span>Deployed four classification models (KNN, Decision Tree, Naive Bayes, SVM) to predict precipitation types.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-caret-right text-blue-500 mt-1 mr-2"></i>
+                                <span>Delivered actionable climate insights through a clean, intuitive Shiny interface.</span>
+                            </li>
+			<li class="flex items-start">
+                                <i class="fas fa-caret-right text-blue-500 mt-1 mr-2"></i>
+                                <span>GitHub: <a href="https://github.com/RajanGuptaShah/Weather-Analysis-Dashboard" target="_blank" class="text-blue-500 hover:underline">Weather-Analysis-Dashboard</a></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-16 theme-bg-primary">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 gradient-text">Education</h2>
+            
+            <div class="max-w-3xl mx-auto">
+                <!-- Timeline -->
+                <div class="ml-6">
+                    <!-- Education 1 -->
+                    <div class="timeline-item">
+                        <div class="theme-bg-secondary p-6 rounded-lg shadow-md mb-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold theme-text-primary">Lovely Professional University</h3>
+                                <span class="text-sm theme-text-secondary">Since Aug 2022</span>
+                            </div>
+                            <p class="theme-text-primary mb-2">Bachelor of Technology - Computer Science and Engineering</p>
+                            <p class="theme-text-secondary">Punjab, India</p>
+                            <p class="font-medium mt-2 theme-text-primary">CGPA: 7.30</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Education 2 -->
+                    <div class="timeline-item">
+                        <div class="theme-bg-secondary p-6 rounded-lg shadow-md mb-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold theme-text-primary">M.R Inter College</h3>
+                                <span class="text-sm theme-text-secondary">Apr 2020 - Mar 2021</span>
+                            </div>
+                            <p class="theme-text-primary mb-2">Intermediate</p>
+                            <p class="theme-text-secondary">Harsidhi, Bihar</p>
+                            <p class="font-medium mt-2 theme-text-primary">Percentage: 63.6%</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Education 3 -->
+                    <div class="timeline-item">
+                        <div class="theme-bg-secondary p-6 rounded-lg shadow-md">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold theme-text-primary">Kanchan Secondary English School</h3>
+                                <span class="text-sm theme-text-secondary">Apr 2017-Mar 2018</span>
+                            </div>
+                            <p class="theme-text-primary mb-2">Matriculation</p>
+                            <p class="theme-text-secondary">Lalitpur, Nepal</p>
+                            <p class="font-medium mt-2 theme-text-primary">GPA: 3.60</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+<section id="certifications" class="py-16 theme-bg-secondary">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12 gradient-text">Certifications</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Certification 1: Data Analysis with Tableau -->
+            <div class="theme-bg-secondary p-5 rounded-lg shadow-md hover:shadow-lg transition">
+                <div class="mb-4 text-blue-500 flex justify-center">
+                    <i class="fas fa-certificate text-4xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-center mb-2 theme-text-primary">Data Analysis with Tableau</h3>
+                <p class="text-center mb-2 theme-text-secondary">Coursera</p>
+                <p class="text-sm text-center theme-text-secondary">Nov 2024</p>
+                <div class="mt-4 text-center">
+                    <a href="https://page.genspark.site/get_upload_url/733fc530223449b673cbba517e65604b3197cb2178a30739db27a7bb9b3f82df/default/0386b977-f56f-4c26-b8ea-d6115f30fbf8" target="_blank" class="text-blue-500 hover:underline">
+                        <i class="fas fa-external-link-alt mr-1"></i> View Certificate
+                    </a>
+                </div>
+                <p class="text-xs text-center mt-2 theme-text-secondary">Verify: EBR31013N3F1</p>
+            </div>
+            
+            <!-- Certification 2: Introduction to Machine Learning -->
+            <div class="theme-bg-secondary p-5 rounded-lg shadow-md hover:shadow-lg transition">
+                <div class="mb-4 text-blue-500 flex justify-center">
+                    <i class="fas fa-certificate text-4xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-center mb-2 theme-text-primary">Introduction to Machine Learning</h3>
+                <p class="text-center mb-2 theme-text-secondary">NPTEL</p>
+                <p class="text-sm text-center theme-text-secondary">Oct 2024</p>
+                <div class="mt-4 text-center">
+                    <a href="https://page.genspark.site/get_upload_url/733fc530223449b673cbba517e65604b3197cb2178a30739db27a7bb9b3f82df/default/14862589-1b04-45b8-928b-820e84bd8feb" target="_blank" class="text-blue-500 hover:underline">
+                        <i class="fas fa-external-link-alt mr-1"></i> View Certificate
+                    </a>
+                </div>
+                <p class="text-xs text-center mt-2 theme-text-secondary">Roll No: NPTEL24CS101S556900058</p>
+            </div>
+            
+            <!-- Certification 3: R Programming -->
+            <div class="theme-bg-secondary p-5 rounded-lg shadow-md hover:shadow-lg transition">
+                <div class="mb-4 text-blue-500 flex justify-center">
+                    <i class="fas fa-certificate text-4xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-center mb-2 theme-text-primary">R Programming</h3>
+                <p class="text-center mb-2 theme-text-secondary">Coursera - Johns Hopkins University</p>
+                <p class="text-sm text-center theme-text-secondary">Feb 2024</p>
+                <div class="mt-4 text-center">
+                    <a href="https://page.genspark.site/get_upload_url/733fc530223449b673cbba517e65604b3197cb2178a30739db27a7bb9b3f82df/default/b74c67d6-2361-42a1-90b8-6b4f14fa4f92" target="_blank" class="text-blue-500 hover:underline">
+                        <i class="fas fa-external-link-alt mr-1"></i> View Certificate
+                    </a>
+                </div>
+                <p class="text-xs text-center mt-2 theme-text-secondary">Verify: S9TJEHYMC3QL</p>
+            </div>
+            
+            <!-- Certification 4: Data Visualization in Excel -->
+            <div class="theme-bg-secondary p-5 rounded-lg shadow-md hover:shadow-lg transition">
+                <div class="mb-4 text-blue-500 flex justify-center">
+                    <i class="fas fa-certificate text-4xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-center mb-2 theme-text-primary">Data Visualization in Excel</h3>
+                <p class="text-center mb-2 theme-text-secondary">Coursera - Macquarie University</p>
+                <p class="text-sm text-center theme-text-secondary">Feb 2024</p>
+                <div class="mt-4 text-center">
+                    <a href="https://page.genspark.site/get_upload_url/733fc530223449b673cbba517e65604b3197cb2178a30739db27a7bb9b3f82df/default/251006c9-d544-4fbc-8393-6d1f660408f7" target="_blank" class="text-blue-500 hover:underline">
+                        <i class="fas fa-external-link-alt mr-1"></i> View Certificate
+                    </a>
+                </div>
+                <p class="text-xs text-center mt-2 theme-text-secondary">Verify: RX7Y3GVPTPHH</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="py-16 theme-bg-primary">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 gradient-text">Achievements</h2>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="theme-bg-secondary rounded-lg shadow-md p-6 mb-6">
+                    <div class="flex items-start">
+                        <div class="mr-4 text-blue-500">
+                            <i class="fas fa-trophy text-3xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2 theme-text-primary">SHL Assessments</h3>
+                            <p class="theme-text-primary">Completed industry-recognized assessments by SHL under AMCAT, enhancing employability across various sectors.</p>
+                            <p class="text-sm theme-text-secondary mt-2">Nov 2024</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="theme-bg-secondary rounded-lg shadow-md p-6">
+                    <div class="flex items-start">
+                        <div class="mr-4 text-blue-500">
+                            <i class="fas fa-chart-line text-3xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2 theme-text-primary">Investment Success</h3>
+                            <p class="theme-text-primary">Achieved an impressive 33.09% return within 15-20 days on the NASDAQ index through strategic investment decisions.</p>
+                            <p class="text-sm theme-text-secondary mt-2">Nov 2024</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 theme-bg-secondary">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 gradient-text">Contact Me</h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Email -->
+                    <div class="theme-bg-secondary rounded-lg shadow-md p-6 text-center hover:shadow-lg transition">
+                        <div class="flex flex-col items-center">
+                            <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4 gradient-bg">
+                                <i class="fas fa-envelope text-white text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2 theme-text-primary">Email</h3>
+                            <a href="mailto:rajang1201@gmail.com" class="theme-text-accent hover:underline">rajang1201@gmail.com</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Phone -->
+                    <div class="theme-bg-secondary rounded-lg shadow-md p-6 text-center hover:shadow-lg transition">
+                        <div class="flex flex-col items-center">
+                            <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4 gradient-bg">
+                                <i class="fas fa-phone text-white text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2 theme-text-primary">Phone</h3>
+                            <a href="tel:+919508141514" class="theme-text-accent hover:underline">+91 9508141514</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Social -->
+                    <div class="theme-bg-secondary rounded-lg shadow-md p-6 text-center hover:shadow-lg transition">
+                        <div class="flex flex-col items-center">
+                            <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4 gradient-bg">
+                                <i class="fas fa-globe text-white text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2 theme-text-primary">Connect</h3>
+                            <div class="flex space-x-4">
+                                <a href="https://linkedin.com/in/rajangupta1201" target="_blank" class="text-blue-500 hover:text-blue-700">
+                                    <i class="fab fa-linkedin text-2xl"></i>
+                                </a>
+                                <a href="https://github.com/RajanGuptaShah" target="_blank" class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+                                    <i class="fab fa-github text-2xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="mt-12 theme-bg-secondary rounded-lg shadow-md p-8">
+                    <h3 class="text-2xl font-semibold mb-6 theme-text-primary text-center">Send Me a Message</h3>
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block mb-2 theme-text-primary">Name</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-2 rounded-lg border theme-border focus:outline-none focus:ring-2 focus:ring-blue-500 theme-bg-secondary theme-text-primary" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block mb-2 theme-text-primary">Email</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-2 rounded-lg border theme-border focus:outline-none focus:ring-2 focus:ring-blue-500 theme-bg-secondary theme-text-primary" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="subject" class="block mb-2 theme-text-primary">Subject</label>
+                            <input type="text" id="subject" name="subject" class="w-full px-4 py-2 rounded-lg border theme-border focus:outline-none focus:ring-2 focus:ring-blue-500 theme-bg-secondary theme-text-primary" required>
+                        </div>
+                        <div>
+                            <label for="message" class="block mb-2 theme-text-primary">Message</label>
+                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 rounded-lg border theme-border focus:outline-none focus:ring-2 focus:ring-blue-500 theme-bg-secondary theme-text-primary" required></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="download-btn text-white px-6 py-3 rounded-lg font-medium">
+                                <i class="fas fa-paper-plane mr-2"></i>Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-10">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h2 class="text-2xl font-bold mb-2">Rajan Kumar Gupta</h2>
+                    <p class="text-blue-200">Computer Science and Engineering Student</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="#about" class="text-blue-200 hover:text-white transition">About</a>
+                    <a href="#skills" class="text-blue-200 hover:text-white transition">Skills</a>
+                    <a href="#projects" class="text-blue-200 hover:text-white transition">Projects</a>
+                    <a href="#education" class="text-blue-200 hover:text-white transition">Education</a>
+                    <a href="#contact" class="text-blue-200 hover:text-white transition">Contact</a>
+                </div>
+            </div>
+            
+            <div class="border-t border-blue-700 mt-8 pt-8 text-center">
+                <p>&copy; 2025 Rajan Kumar Gupta. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Toggle Button -->
+    <div class="chatbot-toggle" id="chatbot-toggle">
+        <i class="fas fa-comment-dots text-white text-2xl"></i>
+    </div>
+
+    <!-- Chatbot Container -->
+    <div class="chatbot-container" id="chatbot-container">
+        <div class="chatbot-header">
+            <div>Chat with Rajan's Assistant</div>
+            <div class="chatbot-close" id="chatbot-close">×</div>
+        </div>
+        <div class="chatbot-messages" id="chatbot-messages">
+            <div class="message bot-message">
+                Hi there! I'm Rajan's virtual assistant. How can I help you learn more about Rajan's skills, projects, or experience?
+            </div>
+        </div>
+        <div class="chatbot-suggestions">
+            <div class="suggestion-chip" onclick="handleSuggestionClick('Tell me about Rajan\'s skills')">Rajan's skills</div>
+            <div class="suggestion-chip" onclick="handleSuggestionClick('What projects has Rajan worked on?')">Projects</div>
+            <div class="suggestion-chip" onclick="handleSuggestionClick('Educational background')">Education</div>
+            <div class="suggestion-chip" onclick="handleSuggestionClick('Contact information')">Contact info</div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatbot-input-field" placeholder="Type your message here...">
+            <button id="chatbot-send-btn">Send</button>
+        </div>
+    </div>
+
+    <script>
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+        
+        // Check for saved theme preference or use preferred color scheme
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+            htmlElement.classList.add('dark');
+            htmlElement.classList.remove('light');
+            themeToggle.checked = true;
+        } else {
+            htmlElement.classList.add('light');
+            htmlElement.classList.remove('dark');
+            themeToggle.checked = false;
+        }
+        
+        // Theme toggle event listener
+        themeToggle.addEventListener('change', function() {
+            if (this.checked) {
+                htmlElement.classList.add('dark');
+                htmlElement.classList.remove('light');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                htmlElement.classList.add('light');
+                htmlElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+        
+        // Chatbot Functionality
+        const chatbotToggle = document.getElementById('chatbot-toggle');
+        const chatbotContainer = document.getElementById('chatbot-container');
+        const chatbotClose = document.getElementById('chatbot-close');
+        const chatbotMessages = document.getElementById('chatbot-messages');
+        const chatbotInput = document.getElementById('chatbot-input-field');
+        const chatbotSendBtn = document.getElementById('chatbot-send-btn');
+        
+        // Chatbot responses
+        const chatbotResponses = {
+            greeting: [
+                "Hi there! How can I help you learn more about Rajan?",
+                "Hello! I'm here to tell you about Rajan's portfolio. What would you like to know?",
+                "Welcome! I can share information about Rajan's skills, projects, or background. What are you interested in?"
+            ],
+            skills: [
+                "Rajan is skilled in multiple programming languages including Python, Java, C++, and R. He's also proficient in data analysis tools like Pandas, NumPy, and Tableau, and has experience with machine learning frameworks and web development.",
+                "Rajan's technical skills include data analysis, machine learning, and web development using Python, Java, C++, and R. He's particularly strong in building dashboards and predictive models.",
+                "Rajan's core technical competencies include Python (95%), C++ (90%), Java (85%), and R (80%). He's also skilled in data visualization tools like Tableau and has soft skills in problem-solving and team collaboration."
+            ],
+            projects: [
+                "Rajan has worked on several impressive projects including a Stock Price Forecasting Dashboard, Heart Disease Prediction System, Road Accident Dashboard, and Weather Analysis Dashboard. Each project showcases his skills in data analysis and visualization, machine learning, and web development.",
+                "Rajan's portfolio includes four major projects: A Stock Price Forecasting Dashboard using Python, Plotly and Prophet; a Heart Disease Prediction System with Random Forest algorithm; a Road Accident Dashboard in Tableau; and a Weather Analysis Dashboard built with R and Shiny."
+            ],
+            education: [
+                "Rajan is pursuing a Bachelor of Technology in Computer Science and Engineering at Lovely Professional University since 2022, with a CGPA of 7.30. He completed his Intermediate education at M.R Inter College in Bihar with 63.6%, and his Matriculation at Kanchan Secondary English School in Nepal with a GPA of 3.60.",
+                "Rajan has a strong educational background in Computer Science and Engineering, currently studying at Lovely Professional University in Punjab, India."
+            ],
+            contact: [
+                "You can reach Rajan via email at rajang1201@gmail.com or by phone at +91 9508141514. You can also connect with him on LinkedIn at linkedin.com/in/rajangupta1201 or check out his projects on GitHub at github.com/RajanGuptaShah.",
+                "Rajan's contact information includes: Email - rajang1201@gmail.com, Phone - +91 9508141514. He's also on LinkedIn and GitHub."
+            ],
+            fallback: [
+                "I'm not sure I understand. Would you like to know about Rajan's skills, projects, education, or contact information?",
+                "Sorry, I didn't catch that. Can you ask about specific aspects of Rajan's portfolio like his skills, projects, or education?",
+                "I'm here to help with information about Rajan. Try asking about his technical skills, recent projects, or educational background."
+            ]
+        };
+        
+        // Function to get random response from category
+        function getRandomResponse(category) {
+            const responses = chatbotResponses[category];
+            return responses[Math.floor(Math.random() * responses.length)];
+        }
+        
+        // Function to add message to chat
+        function addMessage(message, isUser = false) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message');
+            messageElement.classList.add(isUser ? 'user-message' : 'bot-message');
+            messageElement.textContent = message;
+            chatbotMessages.appendChild(messageElement);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+        
+        // Function to handle user message
+        function handleUserMessage(message) {
+            addMessage(message, true);
+            setTimeout(() => {
+                const lowerMessage = message.toLowerCase();
+                
+                if (lowerMessage.includes('hi') || lowerMessage.includes('hello') || lowerMessage.includes('hey')) {
+                    addMessage(getRandomResponse('greeting'));
+                } else if (lowerMessage.includes('skill') || lowerMessage.includes('can do') || lowerMessage.includes('able to') || lowerMessage.includes('capabilities')) {
+                    addMessage(getRandomResponse('skills'));
+                } else if (lowerMessage.includes('project') || lowerMessage.includes('portfolio') || lowerMessage.includes('work')) {
+                    addMessage(getRandomResponse('projects'));
+                } else if (lowerMessage.includes('education') || lowerMessage.includes('study') || lowerMessage.includes('degree') || lowerMessage.includes('college') || lowerMessage.includes('university')) {
+                    addMessage(getRandomResponse('education'));
+                } else if (lowerMessage.includes('contact') || lowerMessage.includes('email') || lowerMessage.includes('phone') || lowerMessage.includes('reach') || lowerMessage.includes('get in touch')) {
+                    addMessage(getRandomResponse('contact'));
+                } else {
+                    addMessage(getRandomResponse('fallback'));
+                }
+            }, 600);
+        }
+        
+        // Function to handle suggestion clicks
+        function handleSuggestionClick(suggestion) {
+            handleUserMessage(suggestion);
+        }
+        
+        // Toggle chatbot visibility
+        chatbotToggle.addEventListener('click', () => {
+            chatbotContainer.style.display = 'flex';
+            chatbotToggle.style.display = 'none';
+        });
+        
+        // Close chatbot
+        chatbotClose.addEventListener('click', () => {
+            chatbotContainer.style.display = 'none';
+            chatbotToggle.style.display = 'flex';
+        });
+        
+        // Send message on button click
+        chatbotSendBtn.addEventListener('click', () => {
+            const message = chatbotInput.value.trim();
+            if (message) {
+                handleUserMessage(message);
+                chatbotInput.value = '';
+            }
+        });
+        
+        // Send message on Enter key
+        chatbotInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const message = chatbotInput.value.trim();
+                if (message) {
+                    handleUserMessage(message);
+                    chatbotInput.value = '';
+                }
+            }
+        });
+        
+        // Form submission handling (prevent page reload)
+        const contactForm = document.getElementById('contact-form');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Message submitted successfully! Rajan will get back to you soon.');
+            contactForm.reset();
+        });
+    </script>
+</body>
+</html>
